@@ -152,7 +152,7 @@ def get_token_api():
 
     # get request params
     # client id of native app, this app is acting as native app (mobile app attempting to communicate to API)
-    query_params = {'client_id': "0oa8s6ehwroxMH1jO5d7",
+    query_params = {'client_id': os.environ["OKTA_NATIVE_APP_CLIENT_ID"],
                     'redirect_uri': "http://localhost:5000/authorization-code/callback-api",
                     'scope': "openid",
                     'state': session['app_state'],
@@ -184,7 +184,7 @@ def callback_api():
                     'code': code,
                     'redirect_uri': request.base_url,
                     'code_verifier': session['code_verifier'],
-                    'client_id': "0oa8s6ehwroxMH1jO5d7" 
+                    'client_id': os.environ["OKTA_NATIVE_APP_CLIENT_ID"]
                     }
     query_params = requests.compat.urlencode(query_params)
 
@@ -210,7 +210,7 @@ def callback_api():
         config["token_uri"],
         headers=headers,
         data=query_params,
-        auth=("0oa8s6ea8rMh9aacS5d7", "cOkyKSQZJw0nODQeaKhof6dJFJkQ2BNNXaZsR10R")
+        auth=(os.environ["OKTA_SERVICE_APP_CLIENT_ID"], os.environ["OKTA_SERVICE_APP_SECRET"])
     )
     return response.json()
 
