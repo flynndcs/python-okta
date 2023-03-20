@@ -1,0 +1,25 @@
+<div>
+    <h2>My Profile</h2>
+    <p>Hello, <span>{{ user.name }}</span>.</p>
+    <p>AOA: <span>{{ user.aoa_id}}</span>.</p>
+    <form method="get" action="refresh-token">
+        <button id="refresh-token-button" type="submit">Get Token</button>
+    </form>
+
+    <form method="get" action="get-token-api">
+        <button id="get-token-api-button" type="submit">Get Token for API</button>
+    </form>
+
+    <hr/>
+    <form method="get" action="validate">
+        <label for="token">Enter the token:</label>
+        <input type="text" name="token" id="token-input" required>
+        <button id="validate-token-button" type="submit">Validate Token</button>
+    </form>
+    <form method="post" action="validate-aoi">
+        <label for="token">Validate this aoi against existing aoa:</label>
+        <input type="text" name="aoi" id="token-input" required>
+        <button id="validate-aoi-button" type="submit">Validate Aoi</button>
+    </form>
+
+</div>
